@@ -1,0 +1,478 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 40px 10px;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.profile-card[data-aos].show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.job,
+.description {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.skills {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.skills h2 {
+  text-align: center;
+}
+
+.skill {
+  margin: 10px 0;
+}
+
+.progress {
+  width: 100%;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.bar {
+  height: 100%;
+  background: #007bff;
+  transition: width 1s ease-in-out;
+}
+
+.socials {
+  margin-top: 20px;
+}
+
+.socials a {
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.facebook {
+  border-color: #1877f2;
+  color: #1877f2;
+}
+.tiktok {
+  border-color: #ff0050;
+  color: #ff0050;
+}
+.instagram {
+  border-color: #e1306c;
+  color: #e1306c;
+}
+.facebook:hover {
+  background-color: #1877f2;
+  color: white;
+}
+.tiktok:hover {
+  background-color: #ff0050;
+  color: white;
+}
+.instagram:hover {
+  background-color: #e1306c;
+  color: white;
+}
+
+.donation {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+.qr-bank {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.qr-bank img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#snow-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.map-section {
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.map-section h2 {
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 20px;
+}
+.avatar-video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-video {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/*  */
+.profile-video {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; /* Hình tròn */
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/*  */
+.avatar,
+.profile-video {
+  border: 2px solid #ccc;
+  transition: transform 0.3s;
+}
+.avatar:hover,
+.profile-video:hover {
+  transform: scale(1.05);
+}
+/*nhắn tin*/
+.floating-messenger-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0084ff;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+  z-index: 9999;
+}
+
+.floating-messenger-button:hover {
+  background-color: #006dbf;
+}
+/* con trỏ */
+#rabbit-cursor {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  transform: translate(-8%, -50%); /* giúp căn giữa chính xác */
+}
+/* thời tiết */
+#time-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 50px;
+  z-index: 9999;
+  user-select: none;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* bình luận */
+.comment-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.comment-section h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.comment-section input,
+.comment-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.comment-section button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.comment-section button:hover {
+  background-color: #0056b3;
+}
+
+#comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  background: #f1f1f1;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.comment strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+}
+/* thanh tiến trình */
+#progress-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+#comment-progress {
+  width: 100%;
+  height: 18px;
+  appearance: none;
+}
+
+#progress-percent {
+  min-width: 40px;
+}
+
+#progress-container {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f0f8ff;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  animation: fadeInPop 0.4s ease;
+}
+
+#comment-progress {
+  width: 70%;
+  height: 18px;
+  appearance: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#comment-progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 8px;
+}
+
+#comment-progress::-webkit-progress-value {
+  background-color: #007bff;
+  transition: width 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+#progress-percent {
+  min-width: 50px;
+  font-size: 16px;
+  color: #007bff;
+}
+
+/* Hiệu ứng nổi bật khi hiện ra */
+@keyframes fadeInPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* thay đổi màu sắc thanh tiến trình */
+#comment-progress {
+  width: 70%;
+  height: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  appearance: none;
+}
+
+/* Màu mặc định khi chưa bị ghi đè */
+#comment-progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 8px;
+}
+
+#comment-progress::-webkit-progress-value {
+  background-color: #007bff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+/* pikachu chạy theo thanh tiến trình */
+#progress-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+#comment-progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#pikachu-gif {
+  position: absolute;
+  bottom: 100%; /* nằm ngay trên progress */
+  left: 0%;
+  width: 60px;
+  height: auto;
+  display: none;
+  transition: left 0.1s linear;
+  animation: shake 0.3s infinite alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+/* thêm nút dele */
+.delete-comment {
+  float: right;
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-comment:hover {
+  color: darkred;
+  transform: scale(1.2);
+}
+/* extra vị trí */
+.extra-info {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3); /* tối nhẹ nền để nổi chữ */
+  border-left: 4px solid rgb(242, 176, 209);
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #efd683; /* 🔆 đổi màu chữ tại đây */
+}
+.extra-info p {
+  margin: 5px 0;
+}
