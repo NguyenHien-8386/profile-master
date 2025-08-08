@@ -15,10 +15,21 @@ body {
   background: #fff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 100%;
   max-width: 550px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease; */
+  /* 🔥 Viền phát sáng */
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.5);
+
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s ease;
@@ -466,13 +477,52 @@ button:hover {
 .extra-info {
   margin-top: 10px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.3); /* tối nhẹ nền để nổi chữ */
-  border-left: 4px solid rgb(242, 176, 209);
+  background: rgba(150, 222, 203, 0.3); /* tối nhẹ nền để nổi chữ */
+  border-left: 4px solid rgb(202, 226, 226);
   border-radius: 8px;
   font-size: 15px;
   line-height: 1.6;
-  color: #efd683; /* 🔆 đổi màu chữ tại đây */
+  color: #cf4217; /* 🔆 đổi màu chữ tại đây */
 }
 .extra-info p {
   margin: 5px 0;
+}
+/* hover lại các kỹ năng */
+.skill:hover .bar {
+  transform: scaleY(1.2);
+  box-shadow: 0 0 10px #1079e9;
+}
+.bar {
+  transition: all 0.3s ease-in-out;
+}
+/* hỗ trợ thiết bị di động */
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 20px;
+  }
+
+  .avatar-video-wrapper {
+    flex-direction: column;
+  }
+
+  .qr-bank img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .floating-messenger-button {
+    padding: 8px 14px;
+    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  #comment-progress {
+    width: 100%;
+  }
+
+  .comment-section {
+    margin: 10px;
+    padding: 10px;
+  }
 }
