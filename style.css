@@ -526,3 +526,19 @@ button:hover {
     padding: 10px;
   }
 }
+/* thêm hiệu ứng chuyển ảnh */
+#bank-image {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#bank-image.slide-out {
+  opacity: 0;
+  transform: translateX(-50px); /* Trượt sang trái khi biến mất */
+}
+
+#bank-image.slide-in {
+  opacity: 0;
+  transform: translateX(50px); /* Vị trí bắt đầu khi trượt vào */
+}

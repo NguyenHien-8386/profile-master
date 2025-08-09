@@ -262,8 +262,24 @@ const bankImages = [
 ];
 
 let currentIndex = 0;
+const img = document.getElementById("bank-image");
+
 setInterval(() => {
-  const img = document.getElementById("bank-image");
-  currentIndex = (currentIndex + 1) % bankImages.length;
-  img.src = bankImages[currentIndex];
-}, 2000); // 5 giây
+  // Thêm hiệu ứng trượt ra
+  img.classList.add("slide-out");
+
+  setTimeout(() => {
+    // Đổi ảnh khi đã trượt ra xong
+    currentIndex = (currentIndex + 1) % bankImages.length;
+    img.src = bankImages[currentIndex];
+
+    // Xóa slide-out, thêm slide-in để trượt vào
+    img.classList.remove("slide-out");
+    img.classList.add("slide-in");
+
+    // Sau khi trượt vào xong, reset class để lần sau dùng lại được
+    setTimeout(() => {
+      img.classList.remove("slide-in");
+    }, 800);
+  }, 800); // Khớp thời gian CSS
+}, 3000);
