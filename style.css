@@ -535,10 +535,10 @@ button:hover {
 
 #bank-image.slide-out {
   opacity: 0;
-  transform: translateX(-50px); /* Trượt sang trái khi biến mất */
+  transform: translateX(-20px); /* Trượt sang trái khi biến mất */
 }
 
 #bank-image.slide-in {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(50px); /* Vị trí bắt đầu khi trượt vào */
 }

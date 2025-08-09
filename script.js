@@ -265,21 +265,23 @@ let currentIndex = 0;
 const img = document.getElementById("bank-image");
 
 setInterval(() => {
-  // Thêm hiệu ứng trượt ra
+  // 1. Ảnh hiện tại trượt ra
   img.classList.add("slide-out");
 
   setTimeout(() => {
-    // Đổi ảnh khi đã trượt ra xong
+    // 2. Đổi ảnh khi đã trượt ra xong
     currentIndex = (currentIndex + 1) % bankImages.length;
     img.src = bankImages[currentIndex];
 
-    // Xóa slide-out, thêm slide-in để trượt vào
+    // 3. Reset lại trạng thái để chuẩn bị trượt vào
     img.classList.remove("slide-out");
+
+    // 4. Cho ảnh mới bắt đầu trượt vào
     img.classList.add("slide-in");
 
-    // Sau khi trượt vào xong, reset class để lần sau dùng lại được
+    // 5. Xóa class slide-in để lần sau còn chạy tiếp
     setTimeout(() => {
       img.classList.remove("slide-in");
     }, 800);
-  }, 800); // Khớp thời gian CSS
+  }, 800); // Thời gian khớp với transition CSS
 }, 3000);
