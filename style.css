@@ -542,3 +542,21 @@ button:hover {
   opacity: 1;
   transform: translateX(50px); /* Vị trí bắt đầu khi trượt vào */
 }
+/* Gradient động toàn trang */
+body {
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
   displayComments(); // ⬅️ Load lại bình luận từ localStorage
 });
 
-// Hiệu ứng tuyết rơi
+// Particles nền
 const canvas = document.getElementById("snow-canvas");
 const ctx = canvas.getContext("2d");
 let width = window.innerWidth;
@@ -48,46 +48,44 @@ let height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-let snowflakes = [];
-function createSnowflakes() {
-  for (let i = 0; i < 100; i++) {
-    snowflakes.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 4 + 1,
-      d: Math.random() * 2 + 1,
-    });
-  }
+let particles = [];
+const numParticles = 80;
+
+for (let i = 0; i < numParticles; i++) {
+  particles.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    r: Math.random() * 3 + 1, // bán kính hạt
+    dx: (Math.random() - 0.5) * 0.5, // tốc độ ngang
+    dy: (Math.random() - 0.5) * 0.5, // tốc độ dọc
+    color: `rgba(255,255,255,${Math.random() * 0.8 + 0.2})`,
+  });
 }
-function drawSnowflakes() {
+
+function drawParticles() {
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = "white";
-  ctx.beginPath();
-  for (let i = 0; i < snowflakes.length; i++) {
-    const f = snowflakes[i];
-    ctx.moveTo(f.x, f.y);
-    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-  }
-  ctx.fill();
-  moveSnowflakes();
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    // Nếu ra ngoài màn hình thì xuất hiện lại
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
+  });
+
+  requestAnimationFrame(drawParticles);
 }
-function moveSnowflakes() {
-  for (let i = 0; i < snowflakes.length; i++) {
-    const f = snowflakes[i];
-    f.y += f.d;
-    f.x += Math.sin(f.y * 0.01);
-    if (f.y > height) {
-      f.y = 0;
-      f.x = Math.random() * width;
-    }
-  }
-}
-function updateCanvas() {
-  drawSnowflakes();
-  requestAnimationFrame(updateCanvas);
-}
-createSnowflakes();
-updateCanvas();
+
+drawParticles();
+
+// Tự cập nhật khi thay đổi kích thước
 window.addEventListener("resize", () => {
   width = window.innerWidth;
   height = window.innerHeight;
